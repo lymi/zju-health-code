@@ -1,7 +1,7 @@
 body, div, p, h3 {
   margin: 0;
   padding: 0;
-  font-family: "Microsoft YaHei","PingHei","Helvetica Neue","Helvetica";
+  font-family: "Helvetica Neue","Helvetica", "Microsoft YaHei","PingHei";
 }
 
 .blug-bg {
