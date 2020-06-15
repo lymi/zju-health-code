@@ -1,0 +1,74 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>浙江大学通行码</title>
+<link rel="stylesheet" type="text/css" href="./index.css">
+
+<body>
+  <img class="blug-bg" src="./assets/blue-bg.png" />
+  <img class="text-logo" src="./assets/text.png" />
+  <div class="content-box">
+    <div class="top-title">
+      <h3 id="owner">李一鸣的通行码</h3>
+      <span class="bgr-blue">研究生</span>
+    </div>
+    <strong>
+      <div class="time2" id="div_timer">
+        <span id="timing"></span>
+      </div>
+    </strong>
+    <div class="qr">
+      <div id="output" style="margin-top: 10px;margin-bottom: 10px">
+        <img width="190" height="190" src="./assets/code.jpg" />
+      </div>
+    </div>
+    <div class="valid-time" id="validTime"></div>
+    <div id="hzjkm">
+      <div class="hzjkm">健康码为 绿码</div>
+    </div>
+    <div class="sync-time" id="syncTime"></div>
+    <p class="tip" style="margin-top: 9px;">凭蓝码可在浙江大学校园内通行<br>请主动出示，配合检查</p>
+    <div style="text-align:center; margin-top: 9px">
+        <a target="_blank" href="http://one.zju.edu.cn/taskcenter/wechat/index">办事大厅</a>&nbsp;&nbsp;&nbsp;
+        <a target="_blank" href="/pass_code/zx/getList">申请记录</a>&nbsp;&nbsp;&nbsp;
+    </div>
+  </div>
+  <div class="bottom-tip">
+    <h3>安 保 处 ：0571-88206110</h3>
+    <a href="http://xwfw.zju.edu.cn/mobile/redir.php?catalog_id=371039" target="_blank" class="link-btn">常见问题</a>
+    <h3>技术支持：0571-87951669</h3>
+  </div>
+</body>
+
+<script type="text/javascript">
+  var timingEle = document.getElementById("timing");
+  var validTimeEle = document.getElementById("validTime");
+  var syncTimeEle = document.getElementById("syncTime");
+  var ownerEle = document.getElementById("owner");
+
+  var date = new Date();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+
+  if (month < 10) {
+    month = '0' + month;
+  }
+
+  if (day < 10) {
+    day = '0' + day;
+  }
+
+  var dateStr = `${month}月${day}日 `;
+  var timeStr = date.toTimeString().substring(0, 8);
+
+  if (location.hash !== "") {
+    ownerEle.innerText = decodeURI(location.hash).substr(1) + '的通行码'
+  }
+  timingEle.innerText = `${dateStr}${timeStr}`
+  validTimeEle.innerText = `有效期：2020-${month}-${day} - 2020-${month}-${day}`
+  syncTimeEle.innerText = `同步时间：2020-${month}-${day} ${timeStr}`
+
+  setInterval(() => {
+    timingEle.innerText = dateStr + new Date().toTimeString().substring(0, 8);
+  }, 1000);
+</script>
+</html>
